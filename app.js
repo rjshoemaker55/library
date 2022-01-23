@@ -1,16 +1,16 @@
 let myLibrary = [
-  {
-    title: 'The Hobbit',
-    author: 'J.R.R. Tolkien',
-    pages: 234,
-    read: true
-  },
-  {
-    title: 'Hunger Games',
-    author: 'Suzanna Collins',
-    pages: 150,
-    read: false
-  }
+  // {
+  //   title: 'The Hobbit',
+  //   author: 'J.R.R. Tolkien',
+  //   pages: 234,
+  //   read: true
+  // },
+  // {
+  //   title: 'Hunger Games',
+  //   author: 'Suzanna Collins',
+  //   pages: 150,
+  //   read: false
+  // }
 ]
 
 function Book(title, author, pages) {
@@ -34,14 +34,27 @@ function addBookToLibrary(book) {
   newBookPages.innerText = `${book.pages} pages`
 
   const newBookRead = document.createElement('button')
-  setRead(book, newBookRead)
+  setRead(newBook, newBookRead)
 
   newBookRead.addEventListener('click', () => {
     book.read = !book.read
     setRead(book, newBookRead)
   })
 
-  newBook.append(newBookTitle, newBookAuthor, newBookPages, newBookRead)
+  const newBookDelete = document.createElement('button')
+  newBookDelete.innerHTML = 'Delete'
+  newBookDelete.addEventListener('click', () => {
+    myLibrary.splice(myLibrary.indexOf(newBook), 1)
+    updateBooks()
+  })
+
+  newBook.append(
+    newBookTitle,
+    newBookAuthor,
+    newBookPages,
+    newBookRead,
+    newBookDelete
+  )
 
   document.getElementById('books-wrapper').append(newBook)
 }
@@ -58,16 +71,22 @@ addBookForm.addEventListener('submit', (event) => {
 
   addBookToLibrary(bookToAdd)
   myLibrary.push(bookToAdd)
+
+  event.target.elements[0].value = ''
+  event.target.elements[1].value = ''
+  event.target.elements[2].value = ''
 })
 
-function setInitialBooks() {
-  document.getElementById('books-wrapper').innerHTML = ''
+function updateBooks() {
+  if (myLibrary) {
+    document.getElementById('books-wrapper').innerHTML = ''
 
-  myLibrary.forEach((book) => addBookToLibrary(book))
+    myLibrary.forEach((book) => addBookToLibrary(book))
+  }
 }
 
 function setRead(book, readButton) {
   readButton.innerText = book.read ? 'Read' : 'Not Read'
 }
 
-setInitialBooks()
+updateBooks()
