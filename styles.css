@@ -2,12 +2,29 @@
   padding: 0;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 :root {
   --yellow-color: rgb(255, 255, 194);
   --dark-gray-color: rgb(54, 54, 54);
+  --peach-color: rgb(255, 196, 196);
+  --green-color: rgb(196, 255, 199);
+  --blue-color: rgb(171, 241, 243);
   font-size: 10px;
+  color: var(--dark-gray-color);
+}
+
+body {
+  position: relative;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 
 .navigation {
@@ -28,4 +45,83 @@
 .library-content-wrapper {
   margin-top: 50px;
   padding: 50px;
+}
+
+.add-book-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: var(--blue-color);
+  padding: 50px;
+  border-radius: 30px;
+}
+
+.add-book-form h3 {
+  font-size: 3rem;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
+
+.add-book-form__close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: transparent;
+  font-size: 3rem;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: gray;
+}
+
+.add-book-form input {
+  display: block;
+  font-size: 2.5rem;
+}
+
+.add-book-form input[type='text'],
+.add-book-form input[type='number'] {
+  margin-bottom: 10px;
+  border: none;
+  background-color: var(--peach-color);
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition-duration: 0.5s;
+}
+
+.add-book-form input[type='text']:focus,
+.add-book-form input[type='number']:focus {
+  background-color: var(--green-color);
+  border: none;
+}
+
+.add-book-form input[type='submit'] {
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #fff;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to right,
+    #dd5e89 0%,
+    #f7bb97 51%,
+    #dd5e89 100%
+  );
+  border: none;
+  margin: auto;
+}
+
+.add-book-form input[type='submit']:hover {
+  background-position: right center;
+  transform: rotate3d(1, 1, 1, 10deg);
 }

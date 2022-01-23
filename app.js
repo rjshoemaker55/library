@@ -89,4 +89,30 @@ function setRead(book, readButton) {
   readButton.innerText = book.read ? 'Read' : 'Not Read'
 }
 
+const addBookButton = document.getElementById('add-book-button')
+addBookButton.addEventListener('click', (button) => {
+  if (addBookForm.dataset.show === 'true') {
+    hide(addBookForm)
+    addBookForm.dataset.show = 'false'
+  } else {
+    show(addBookForm)
+    addBookForm.dataset.show = 'true'
+  }
+})
+
+const addBookFormClose = document.getElementById('add-book-form__close')
+addBookFormClose.addEventListener('click', () => {
+  hide(addBookForm)
+})
+
+function hide(element) {
+  element.classList.remove('show')
+  element.classList.add('hide')
+}
+
+function show(element) {
+  element.classList.remove('hide')
+  element.classList.add('show')
+}
+
 updateBooks()

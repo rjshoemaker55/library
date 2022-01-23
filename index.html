@@ -24,8 +24,12 @@
         <div class="library__books-wrapper" id="books-wrapper"></div>
       </div>
       <div class="add-book-form-wrapper">
-        <h2 class="add-book-form-title">Add a book</h2>
-        <form id="add-book-form">
+        <button class="add-book-button" id="add-book-button">Add a book</button>
+        <form class="add-book-form hide" id="add-book-form" data-show="false">
+          <h3>Add a book</h3>
+          <button class="add-book-form__close" id="add-book-form__close">
+            X
+          </button>
           <input type="text" placeholder="Title" name="title" />
           <input type="text" placeholder="Author" name="author" />
           <input type="number" placeholder="Pages" name="author" />
