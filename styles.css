@@ -49,6 +49,24 @@ body {
   z-index: 1;
 }
 
+.add-book-button {
+  padding: 10px 20px;
+  border-radius: 3.5rem;
+  border: none;
+  box-shadow: 0 0 0 1rem var(--peach-color);
+  background-color: rgb(196, 255, 199);
+  font-size: 3rem;
+  display: block;
+  margin: 30px auto 0px auto;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.add-book-button:hover {
+  background-color: var(--peach-color);
+  box-shadow: 0 0 0 1.5rem var(--green-color);
+}
+
 .add-book-form {
   position: fixed;
   top: 50%;
@@ -57,18 +75,7 @@ body {
   background-color: var(--blue-color);
   padding: 5rem;
   border-radius: 3rem;
-}
-
-.add-book-form::after {
-  content: '';
-  position: absolute;
-  width: 105%;
-  height: 105%;
-  top: -2.5%;
-  left: -2.5%;
-  border-radius: 3rem;
-  background: linear-gradient(var(--yellow-color), var(--green-color));
-  z-index: -1;
+  box-shadow: 0 0 0 3.5rem var(--green-color);
 }
 
 .add-book-form h3 {
@@ -155,6 +162,7 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+  margin-top: 40px;
 }
 
 .book-card {
@@ -165,6 +173,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  box-shadow: 0 0 0 2rem var(--yellow-color);
 }
 
 .book-card h4 {
@@ -187,6 +196,12 @@ body {
   cursor: pointer;
   font-weight: bold;
   color: rgb(61, 61, 61);
+  transition-duration: 0.3s;
+}
+
+.book-card__btn:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
 }
 
 .book-card__btn.read {
