@@ -9,6 +9,7 @@
   --yellow-color: rgb(255, 255, 194);
   --dark-gray-color: rgb(54, 54, 54);
   --peach-color: rgb(255, 196, 196);
+  --dark-red-color: rgb(255, 89, 89);
   --green-color: rgb(196, 255, 199);
   --blue-color: rgb(171, 241, 243);
   font-size: 10px;
@@ -31,7 +32,7 @@ body {
   width: 100%;
   background-color: var(--yellow-color);
   list-style: none;
-  height: 80px;
+  height: 8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,8 +44,9 @@ body {
 }
 
 .library-content-wrapper {
-  margin-top: 50px;
-  padding: 50px;
+  margin-top: 5rem;
+  padding: 5rem;
+  z-index: 1;
 }
 
 .add-book-form {
@@ -52,28 +54,45 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
   background-color: var(--blue-color);
-  padding: 50px;
-  border-radius: 30px;
+  padding: 5rem;
+  border-radius: 3rem;
+}
+
+.add-book-form::after {
+  content: '';
+  position: absolute;
+  width: 105%;
+  height: 105%;
+  top: -2.5%;
+  left: -2.5%;
+  border-radius: 3rem;
+  background: linear-gradient(var(--yellow-color), var(--green-color));
+  z-index: -1;
 }
 
 .add-book-form h3 {
   font-size: 3rem;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 2rem auto;
   text-align: center;
 }
 
 .add-book-form__close {
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 2.5rem;
+  right: 2.5rem;
   background: transparent;
   font-size: 3rem;
   border: none;
   font-weight: bold;
   cursor: pointer;
   color: gray;
+  transition-duration: 0.3s;
+}
+
+.add-book-form__close:hover {
+  color: black;
+  transform: scale(1.1);
 }
 
 .add-book-form input {
@@ -83,11 +102,11 @@ body {
 
 .add-book-form input[type='text'],
 .add-book-form input[type='number'] {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   border: none;
   background-color: var(--peach-color);
-  border-radius: 30px;
-  padding: 10px 20px;
+  border-radius: 3rem;
+  padding: 1rem 2rem;
   transition-duration: 0.5s;
 }
 
@@ -98,19 +117,20 @@ body {
 }
 
 .add-book-form input[type='submit'] {
-  padding: 15px;
+  padding: 1.5rem;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
   color: #fff;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  width: 200px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 2rem #eee;
+  border-radius: 1rem;
+  width: 20rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.12),
+    0 0.1rem 0.2rem rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 2.5rem;
   background-image: linear-gradient(
     to right,
     #dd5e89 0%,
@@ -124,4 +144,55 @@ body {
 .add-book-form input[type='submit']:hover {
   background-position: right center;
   transform: rotate3d(1, 1, 1, 10deg);
+}
+
+.library h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.library__books-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+.book-card {
+  background-color: var(--peach-color);
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.book-card h4 {
+  font-size: 2.5rem;
+}
+
+.book-card__author {
+  font-size: 2rem;
+}
+
+.book-card__pages {
+  font-size: 1.5rem;
+}
+
+.book-card__btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(61, 61, 61);
+}
+
+.book-card__btn.read {
+  background-color: var(--green-color);
+}
+
+.book-card__btn.delete {
+  background-color: var(--dark-red-color);
 }

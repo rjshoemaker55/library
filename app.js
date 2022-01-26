@@ -18,12 +18,15 @@ function addBookToLibrary(book) {
   newBookTitle.innerText = book.title
 
   const newBookAuthor = document.createElement('p')
-  newBookAuthor.innerText = book.author
+  newBookAuthor.classList.add('book-card__author')
+  newBookAuthor.innerText = `by ${book.author}`
 
   const newBookPages = document.createElement('p')
+  newBookPages.classList.add('book-card__pages')
   newBookPages.innerText = `${book.pages} pages`
 
   const newBookRead = document.createElement('button')
+  newBookRead.classList.add('book-card__btn')
   setRead(newBook, newBookRead)
 
   newBookRead.addEventListener('click', () => {
@@ -34,6 +37,7 @@ function addBookToLibrary(book) {
   // Delete book from library
   const newBookDelete = document.createElement('button')
   newBookDelete.innerHTML = 'Delete'
+  newBookDelete.classList.add('book-card__btn', 'delete')
   newBookDelete.addEventListener('click', () => {
     myLibrary.splice(myLibrary.indexOf(newBook), 1)
     updateBooks()
@@ -53,19 +57,19 @@ function addBookToLibrary(book) {
 // Book form logic
 const addBookForm = document.getElementById('add-book-form')
 addBookForm.addEventListener('submit', (event) => {
-  console.log('submited form')
   event.preventDefault()
 
   const bookToAdd = new Book(
-    event.target.elements[0].value,
     event.target.elements[1].value,
-    event.target.elements[2].value
+    event.target.elements[2].value,
+    event.target.elements[3].value
   )
 
   addBookToLibrary(bookToAdd)
   myLibrary.push(bookToAdd)
   clearForm(addBookForm)
   hide(addBookForm)
+  addBookForm.dataset.show = 'false'
 })
 
 // Update books in library
@@ -92,6 +96,7 @@ addBookButton.addEventListener('click', (button) => {
 const addBookFormClose = document.getElementById('add-book-form__close')
 addBookFormClose.addEventListener('click', (event) => {
   event.preventDefault()
+  addBookForm.dataset.show = 'false'
   clearForm(addBookForm)
   hide(addBookForm)
 })
@@ -109,6 +114,12 @@ function show(element) {
 
 function setRead(book, readButton) {
   readButton.innerText = book.read ? 'Read' : 'Not Read'
+
+  if (book.read) {
+    readButton.classList.add('read')
+  } else {
+    readButton.classList.remove('read')
+  }
 }
 
 function clearForm(form) {
