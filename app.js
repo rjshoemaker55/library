@@ -1,11 +1,11 @@
 let myLibrary = []
 
-// Book constructor
-function Book(title, author, pages) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = false
+class Book {
+  constructor(title, author, pages) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+  }
 }
 
 // Add book to library
